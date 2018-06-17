@@ -1,0 +1,14 @@
+<div *ngIf="isSubmitted">
+  <div *ngIf="isError" class="alert alert-danger">
+    <strong>Errror!</strong> {{errorMessage}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="!isError" class="alert alert-success">
+    <strong>Success!</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>

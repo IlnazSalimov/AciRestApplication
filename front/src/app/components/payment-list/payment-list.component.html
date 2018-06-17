@@ -1,0 +1,49 @@
+<app-show-notification [isSubmitted]="submitted" [isError]="isRequestError" 
+message="Payment was successfully deleted!" [errorMessage]="postErrorMessage"></app-show-notification>
+
+<form [formGroup]="paymentForm" class="bottom-buffer">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Customer</label>
+      <select class="form-control" id="customerSelect" formControlName="customerSelect" (change)="onFilterCange()">
+        <option value="">All customers</option>
+        <option *ngFor="let cust of customers" [value]="cust.id">{{cust.firstName}} {{cust.lastName}}</option>
+      </select>
+    </div>
+    <div class="col-auto">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Biller</label>
+        <select class="form-control" id="billerSelect" formControlName="billerSelect" (change)="onFilterCange()">
+          <option value="">All billers</option>
+          <option *ngFor="let b of billers" [value]="b.id">{{b.firstName}} {{b.lastName}}</option>
+        </select>
+      </div>
+    <div class="col-md float-right">
+      <button type="button" class="btn btn-primary float-right" [routerLink]="['/payment/create']">New payment</button>
+    </div>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Biller</th>
+      <th scope="col">Account</th>
+      <th scope="col">Amount</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of payments">
+      <th scope="row">{{payment.id}}</th>
+      <td>{{payment.createDate.toLocaleDateString()}} {{payment.createDate.toLocaleTimeString()}}</td>
+      <td>{{payment.customer.firstName}} {{payment.customer.lastName}}</td>
+      <td>{{payment.biller.firstName}} {{payment.biller.lastName}}</td>
+      <td>{{payment.accountNumber}}</td>
+      <td>{{payment.amount}}</td>
+      <td><button type="button" class="btn btn-link" (click)="deletePayment(payment.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

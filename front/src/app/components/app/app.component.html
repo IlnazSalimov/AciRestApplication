@@ -1,0 +1,15 @@
+<ng-progress [color]="'blue'" [showSpinner]="false"></ng-progress>
+<div class='container'>
+        <div class='row justify-content-end top-buffer'>
+                <div class="btn-group " role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-light" [routerLinkActive]="['active']" [routerLink]="['/payments']">Payments</button>
+                        <button type="button" class="btn btn-light" [routerLinkActive]="['active']" [routerLink]="['/customers']">Customers</button>
+                        <button type="button" class="btn btn-light" [routerLinkActive]="['active']" [routerLink]="['/billers']">Billers</button>
+                </div>
+        </div>
+        <div class='row top-buffer'>
+                <div class="col-md-12">
+                        <router-outlet></router-outlet>
+                </div>
+        </div>
+</div>

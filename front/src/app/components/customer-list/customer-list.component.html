@@ -1,0 +1,27 @@
+<app-show-notification [isSubmitted]="submitted" [isError]="isRequestError" 
+message="Customer was successfully deleted!" [errorMessage]="postErrorMessage"></app-show-notification>
+
+<div class='float-right bottom-buffer'>
+  <button type="button" class="btn btn-primary" [routerLink]="['/customer/create']">New customer</button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date of birth</th>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+          <th scope="row">{{customer.id}}</th>
+          <td>{{customer.firstName}} {{customer.lastName}}</td>
+          <td>{{customer.dateOfBirth.toLocaleDateString()}}</td>
+          <td>{{customer.address}}</td>
+          <td><button type="button" class="btn btn-link" (click)="deleteCustomer(customer.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>

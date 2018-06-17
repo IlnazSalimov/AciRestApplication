@@ -1,0 +1,27 @@
+<app-show-notification [isSubmitted]="submitted" [isError]="isRequestError" 
+message="Biller was successfully deleted!" [errorMessage]="postErrorMessage"></app-show-notification>
+
+<div class='float-right bottom-buffer'>
+  <button type="button" class="btn btn-primary" [routerLink]="['/biller/create']">New biller</button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date of birth</th>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let biller of billers">
+          <th scope="row">{{biller.id}}</th>
+          <td>{{biller.firstName}} {{biller.lastName}}</td>
+          <td>{{biller.dateOfBirth.toLocaleDateString()}}</td>
+          <td>{{biller.address}}</td>
+          <td><button type="button" class="btn btn-link" (click)="deleteBiller(biller.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
